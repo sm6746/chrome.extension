@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Connections Dashboard",
+  "version": "1.0.0",
+  "description": "A Chrome extension to view and manage your LinkedIn connections in a clean dashboard",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.linkedin.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "LinkedIn Connections Dashboard"
+  },
+  "icons": {
+    "16": "public/favicon.ico",
+    "48": "public/favicon.ico",
+    "128": "public/favicon.ico"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["index.html", "assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
+
